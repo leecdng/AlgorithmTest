@@ -8,7 +8,7 @@ class KakaoClawCrane {
             for(int i=0; i<board.length; i++){
                 if(board[i][k]!=0){
                     basket[j-answer]=board[i][k]; // 뽑은 인형 바구니에 담기
-                    board[i][k]=0; // 뽑은 인형 자리 비우기
+                    board[i][k]=0; // 뽑은 인형 자리 비우기 
                     if(j-answer>0){
                         if(basket[j-answer]==basket[j-answer-1]){
                             answer+=2;
