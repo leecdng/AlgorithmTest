@@ -1,4 +1,4 @@
-class KakaoClawCrane {
+class KakaoClawCrane_file {
     public int solution(int[][] board, int[] moves) {
         int[] basket= new int[moves.length]; // 뽑힌 인형 바구니
         int k=0; // 실제 작동 위치 (moves-1)
