@@ -1,8 +1,8 @@
 
 public class SportsUniform_01 {
 	public int solution(int n, int[] lost, int[] reserve) {
-        int answer = n - lost.length; // ÀüÃ¼ ÇĞ»ı - Ã¼À°º¹ ÀÒ¾î¹ö¸° ÇĞ»ı
-        // ¿©¹ú Ã¼À°º¹ ÇĞ»ıÀÌ 1¹ú¸¸ µµ³­ ´çÇßÀ» °æ¿ì
+        int answer = n - lost.length; // ì „ì²´ í•™ìƒ - ì²´ìœ¡ë³µ ìƒì–´ë²„ë¦° í•™ìƒ
+        // ì—¬ë²Œ ì²´ìœ¡ë³µ í•™ìƒì´ 1ë²Œë§Œ ë„ë‚œ ë‹¹í–ˆì„ ê²½ìš°
         for(int i=0; i<reserve.length; i++){
             for(int j=0; j<lost.length; j++){
                 if(lost[j]!=0){
@@ -17,7 +17,7 @@ public class SportsUniform_01 {
             }
         }
         
-        // ³ª¸ÓÁö ÇĞ»ı Áß ¾Õ¹øÈ£ or µŞ¹øÈ£¿¡°Ô Ã¼À°º¹ ºô·ÁÁÖ±â
+        // ë‚˜ë¨¸ì§€ í•™ìƒ ì¤‘ ì•ë²ˆí˜¸ or ë’·ë²ˆí˜¸ì—ê²Œ ì²´ìœ¡ë³µ ë¹Œë ¤ì£¼ê¸°
         int tmp1=0;
         int[] lost1=new int[lost.length];
         int[] reserve1=new int[reserve.length];
