@@ -1,4 +1,3 @@
-
 public class NewId {
 	public String solution(String new_id) {
         String answer = "";
