@@ -23,12 +23,14 @@ public class Ternary {
         int answer = 0;
         int mul = 1;
         String ternary = "";
+        // 뒤집힌 3진수로 만들기
         while(n>=3){
             ternary += n%3;
             n /= 3;
         }
         ternary += n;
-
+        
+        // 다시 10진수로 만들기
         for(int i=(ternary.length()-1); i>=0; i--){
             answer += (int)(ternary.charAt(i)-'0')*mul;
             mul*=3;
