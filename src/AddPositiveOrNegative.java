@@ -1,6 +1,6 @@
 /*
 
-음양 더하기
+음양 더하기 / 5min.
 https://programmers.co.kr/learn/courses/30/lessons/76501
  
 [문제 설명]

@@ -1,6 +1,6 @@
 /*
 
-K번째수
+K번째수 / 28min.
 https://programmers.co.kr/learn/courses/30/lessons/42748
 
 
