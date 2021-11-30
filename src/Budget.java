@@ -1,5 +1,5 @@
 /*
-예산
+예산 / 7min.
 https://programmers.co.kr/learn/courses/30/lessons/12982
 
 

@@ -1,5 +1,5 @@
 /*
-폰켓몬
+폰켓몬 / 86min.
 https://programmers.co.kr/learn/courses/30/lessons/1845
 
 
