@@ -1,5 +1,5 @@
 /*
-행렬의 덧셈
+행렬의 덧셈 / 6min.
 https://programmers.co.kr/learn/courses/30/lessons/12950
 
 [문제 설명]
