@@ -1,5 +1,5 @@
 /*
-콜라츠 추측
+콜라츠 추측 / 31min.
 https://programmers.co.kr/learn/courses/30/lessons/12943
 
 [문제 설명]
