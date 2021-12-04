@@ -11,9 +11,7 @@ https://programmers.co.kr/learn/courses/30/lessons/12930
 첫 번째 글자는 0번째 인덱스로 보아 짝수번째 알파벳으로 처리해야 합니다.
 
 [입출력 예]
-	s					return
---------------------------------------
-"try hello world"	"TrY HeLlO WoRlD"
+"try hello world" -> "TrY HeLlO WoRlD"
 
 [입출력 예 설명]
 "try hello world"는 세 단어 "try", "hello", "world"로 구성되어 있습니다. 
