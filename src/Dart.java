@@ -2,6 +2,7 @@
 [1차] 다트 게임 / 100min.
 https://programmers.co.kr/learn/courses/30/lessons/17682
 
+
 [문제 설명]
 카카오톡 게임별의 하반기 신규 서비스로 다트 게임을 출시하기로 했다. 다트 게임은 다트판에 다트를 세 차례 던져 그 점수의 합계로 실력을 겨루는 게임으로, 모두가 간단히 즐길 수 있다.
 갓 입사한 무지는 코딩 실력을 인정받아 게임의 핵심 부분인 점수 계산 로직을 맡게 되었다. 다트 게임의 점수 계산 로직은 아래와 같다.
@@ -44,38 +45,42 @@ Single(S), Double(D), Triple(T)은 점수마다 하나씩 존재한다.
 7	1D2S3T*		59		12 + 21 * 2 + 33 * 2
 
 */
+
 public class Dart {
 	public int solution(String dartResult) {
         int answer = 0;
-        String[][] point= new String[3][3];
-        int[] p= new int[3];
+        String[][] point= new String[3][3]; // 점수 | 보너스 | [옵션] 배열
+        int[] p= new int[3]; // 최종점수 배열
         int cnt=0;
+        // point 배열에 점수 | 보너스 | [옵션] 각각 담기
         for(int i=0; i<dartResult.length(); i++){
             if(i<dartResult.length()-1){
-                if(dartResult.charAt(i)-'0'>=0 && dartResult.charAt(i)-'0'<=9){ // 숫자면
-                    if(dartResult.charAt(i)-'0'==1 && dartResult.charAt(i+1)-'0'==0){ // 10이면
-                        point[cnt][0]=dartResult.substring(i, i+2);
+                if(dartResult.charAt(i)-'0'>=0 && dartResult.charAt(i)-'0'<=9){ // 숫자일 경우
+                    if(dartResult.charAt(i)-'0'==1 && dartResult.charAt(i+1)-'0'==0){ // 10일 경우
+                        point[cnt][0]=dartResult.substring(i, i+2); // 두 자리를 점수에 담고 다음 index 건너뛰기
                         i++;
                     } else{
-                        point[cnt][0]=dartResult.substring(i, i+1);
+                        point[cnt][0]=dartResult.substring(i, i+1); // 해당 문자만 점수에 담기
                     }
-                } else if(dartResult.charAt(i)=='S' || dartResult.charAt(i)=='D' || dartResult.charAt(i)=='T'){
-                    point[cnt][1]=dartResult.substring(i, i+1);
-                    if(dartResult.charAt(i+1)=='*' || dartResult.charAt(i+1)=='#'){
-                        point[cnt][2]=dartResult.charAt(i+1)+"";
+                } else if(dartResult.charAt(i)=='S' || dartResult.charAt(i)=='D' || dartResult.charAt(i)=='T'){ // 보너스 문자일 경우
+                    point[cnt][1]=dartResult.substring(i, i+1); // 보너스에 담기
+                    if(dartResult.charAt(i+1)=='*' || dartResult.charAt(i+1)=='#'){ // 보너스 다음에 옵션 #, *이 올 경우
+                        point[cnt][2]=dartResult.charAt(i+1)+""; // 다음 문자를 옵션에 담고 다음 index 건너뛰기
                         i++;
                     } else{
-                        point[cnt][2]="";
+                        point[cnt][2]=""; // 옵션이 없을 시 빈 문자열 값 담기
                     }
-                    cnt++;
+                    cnt++; // 1게임 종료 후 index 증가
                 }
-            } else{
+            } else{ // 마지막 문자일 때
                 if(dartResult.charAt(i)=='S' || dartResult.charAt(i)=='D' || dartResult.charAt(i)=='T'){
-                    point[cnt][1]=dartResult.substring(i);
-                    point[cnt][2]="";
+                    point[cnt][1]=dartResult.substring(i); // 보너스
+                    point[cnt][2]=""; // 옵션
                 }
             }
         }
+        
+        // 각 점수, 보너스, 옵션을 이용하여 최종점수를 p 배열에 담기
         for(int i=0; i<p.length; i++){
             p[i] = Integer.parseInt(point[i][0]);
             if(point[i][1].equals("D")){
@@ -87,13 +92,14 @@ public class Dart {
                 p[i] *= -1;
             } else if(point[i][2].equals("*")){
                 p[i] *= 2;
-                if(i>0){
+                if(i>0){ // 첫 번째 게임이 아닐 경우 이전 게임 점수도 2배
                     p[i-1] *= 2;
                 }
             }
         }
+        
+        // 최종 점수 계산
         for(int i=0; i<p.length; i++){
-            System.out.print(p[i]);
             answer+=p[i];
         }
         return answer;
