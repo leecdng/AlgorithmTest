@@ -1,5 +1,5 @@
 /*
-숫자 문자열과 영단어
+숫자 문자열과 영단어 / 11min.
 https://programmers.co.kr/learn/courses/30/lessons/81301
 
 [문제 설명]
