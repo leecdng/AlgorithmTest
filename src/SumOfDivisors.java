@@ -1,5 +1,5 @@
 /*
-약수의 합
+약수의 합 / 2min.
 https://programmers.co.kr/learn/courses/30/lessons/12928
 
 [문제 설명]
