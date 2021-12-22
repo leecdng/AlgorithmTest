@@ -1,5 +1,5 @@
 /*
-실패율
+실패율 / 97min.
 https://programmers.co.kr/learn/courses/30/lessons/42889
 
 [문제 설명]
@@ -44,42 +44,54 @@ N	stages	result
 4번 스테이지 실패율 : 1/2
 5번 스테이지 실패율 : 0/1
 각 스테이지의 번호를 실패율의 내림차순으로 정렬하면 다음과 같다.
-
 [3,4,2,1,5]
 
 
 [입출력 예 #2]
-
 모든 사용자가 마지막 스테이지에 있으므로 4번 스테이지의 실패율은 1이며 나머지 스테이지의 실패율은 0이다.
 [4,1,2,3]
+
+
+[기록]
+- 전체 스테이지 번호와 해당 스테이지의 실패율을 구해 각각 순서대로 배열에 담고,
+실패율을 내림차순으로 스테이지 배열도 같이 정렬해준다.
+- 실패율을 구할 때 (double)now_stg/all_stg*100로 구하면 int끼리 먼저 계산되어 제대로 구해지지 않음.
+(double)now_stg*100/all_stg로 구해야 한다.
+- 정렬할 때 주석처리된 방법으로도 맞게 정렬이 되었지만, 버블정렬을 더 효율적이지 못 하게 사용한 셈.. 정렬 공부할 것.
 
 */
 
 public class FailureRate {
 	public int[] solution(int N, int[] stages) {
-        int[] answer = new int[N];
-        int all_stg = 0;
+        int[] answer = new int[N]; // 전체 스테이지 번호 배열
         int now_stg = 0;
-        double[] rate = new double[N];
+        int all_stg = 0; 
+        double[] rate = new double[N]; // 실패율 배열
+        // 실패율 구하기
         for(int i=1; i<=N; i++){
-            answer[i-1] = i;
+            answer[i-1] = i; // 1~N까지 스테이지 배열에 담기
             all_stg = 0;
             now_stg = 0;
             for(int j=0; j<stages.length; j++){
-                if(i==stages[j]) now_stg++;
-                if(i<=stages[j]) all_stg++;
+                if(i==stages[j]) now_stg++; // 스테이지를 클리어 못 한 유저 수
+                if(i<=stages[j]) all_stg++; // 스테이지 도달 유저 수
             }
-            rate[i-1] = all_stg!=0? (double)now_stg*100/all_stg : 0;
+            rate[i-1] = all_stg!=0? (double)now_stg*100/all_stg : 0; // 해당 스테이지의 실패율 담기
         }
         
+        // 스테이지 배열을 실패율 내림차순으로 정렬
         double tmp = 0.0;
-        int tmp2=0;
-        for(int i=rate.length-1; i>=0; i--){
-            for(int j=1; j<rate.length; j++){
+        int tmp2 = 0;
+        // for(int i=rate.length-1; i>=0; i--){
+        //    for(int j=1; j<rate.length; j++){
+        for(int i=0; i<rate.length; i++){
+            for(int j=1; j<rate.length-i; j++){
                 if(rate[j-1]<rate[j]){
+                	// 실패율 정렬
                     tmp = rate[j-1];
                     rate[j-1] = rate[j];
                     rate[j] = tmp;
+                    // 스테이지 정렬
                     tmp2 = answer[j-1];
                     answer[j-1] = answer[j];
                     answer[j] = tmp2;
